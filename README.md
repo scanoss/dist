@@ -16,8 +16,9 @@ curl -fsSL https://get.earnie.dev/server/install.sh | sh
 The script checks Docker Engine 29 or later and the compose plugin, downloads
 the bundle for the newest release into `./earnie-vX.Y.Z/`, verifies its
 checksum, pulls the Earnie images from `ghcr.io` (public) and runs the bundle's
-`./install.sh`. `EARNIE_VERSION=vX.Y.Z` installs that release instead of the
-newest; `EARNIE_TENANT_ENV=/path/to/tenant.env` copies a filled configuration
+`./install.sh`. `curl -fsSL https://get.earnie.dev/server/install.sh | EARNIE_VERSION=vX.Y.Z sh`
+installs that release instead of the newest (the variable goes on the `sh`
+side of the pipe); `EARNIE_TENANT_ENV=/path/to/tenant.env` copies a filled configuration
 into the bundle directory first. How to configure and run the bundle:
 [Installing Earnie](https://docs.scanoss.com/en/latest/earnie/self-hosting/installation).
 

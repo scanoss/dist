@@ -8,7 +8,8 @@
 # ./install.sh. Needs curl, tar, sha256sum and Docker Engine 29 or later with
 # the compose plugin, run by a user in the docker group.
 #
-#   EARNIE_VERSION     the release to install, e.g. v0.4.4; default: the newest
+#   EARNIE_VERSION     the release to install, e.g. v0.4.4; default: the newest.
+#                      Set it on the sh side: curl ... | EARNIE_VERSION=v0.4.4 sh
 #   EARNIE_TENANT_ENV  a filled tenant.env to copy into the bundle directory,
 #                      e.g. the one from the release you are upgrading from
 #   EARNIE_DIST_URL    where the releases are; default https://get.earnie.dev
@@ -30,8 +31,13 @@ need() {
   done
 }
 
+need_docker() {
+  command -v docker >/dev/null 2>&1 \
+    || die "docker is required: install Docker Engine 29 or later from https://docs.docker.com/engine/install/"
+}
+
 check_docker() {
-  need docker
+  need_docker
   server="$(docker version --format '{{.Server.Version}}' 2>/dev/null)" \
     || die "cannot talk to the Docker daemon: is Docker running, and is $(id -un) in the docker group?"
   major="${server%%.*}"
@@ -73,7 +79,8 @@ main() {
   bundle="earnie-bundle-$version.tar.gz"
   url="$dist/server/$version"
   say "downloading $bundle from $url"
-  fetch "$url/$bundle" "$tmp/$bundle" || die "no bundle at $url/$bundle"
+  fetch "$url/$bundle" "$tmp/$bundle" \
+    || die "no release $version at $dist/server/$version/ (the newest is $(tr -d '[:space:]' < "$tmp/latest"))"
   fetch "$url/earnie-bundle-$version.sha256" "$tmp/$bundle.sha256" || die "no checksum at $url/earnie-bundle-$version.sha256"
   (cd "$tmp" && sha256sum -c "$bundle.sha256" >/dev/null) || die "checksum mismatch for $bundle"
 
