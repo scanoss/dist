@@ -41,7 +41,7 @@ check_docker() {
 }
 
 # fetch URL FILE: 0 when downloaded, 1 otherwise.
-fetch() { curl -fsSL --retry 3 -o "$2" "$1"; }
+fetch() { curl -fsSL --connect-timeout 15 --retry 3 -o "$2" "$1"; }
 
 pick_dist() {
   if [ -n "${EARNIE_DIST_URL:-}" ]; then
