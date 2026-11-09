@@ -1,5 +1,9 @@
 # Earnie v0.11.4
 
+<!-- earnie:stable -->
+**v0.11.4 is a stable release.** Promoted on 2026-11-09. Upgrade test: https://github.com/scanoss/earnie/actions/runs/42613073433. Supported until the second stable release after it is promoted.
+<!-- /earnie:stable -->
+
 Released 2026-11-09.
 
 Images:
@@ -62,4 +66,3 @@ Changes marked as security fixes. A fix nobody marked is not listed, so an empty
 
 No change between v0.11.3 and v0.11.4 is marked as a security fix.
 <!-- /earnie:stable-changes -->
-
