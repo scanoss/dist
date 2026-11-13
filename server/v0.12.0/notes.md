@@ -1,5 +1,9 @@
 # Earnie v0.12.0
 
+<!-- earnie:stable -->
+**v0.12.0 is a stable release.** Promoted on 2026-11-13. Upgrade test: https://github.com/scanoss/earnie/actions/runs/43440645462. Supported until the second stable release after it is promoted.
+<!-- /earnie:stable -->
+
 Released 2026-11-13.
 
 Images:
@@ -8,12 +12,16 @@ Images:
 - `ghcr.io/scanoss/earnie/earnie-web:v0.12.0`
 
 <!-- earnie:stable-changes -->
-## Changes since v0.11.8
+## Changes since v0.11.4
 
-For an admin moving from v0.11.8 to v0.12.0.
+For an admin moving from v0.11.4 to v0.12.0.
 
 ### Weekly releases included
 
+- v0.11.5
+- v0.11.6
+- v0.11.7
+- v0.11.8
 - v0.12.0
 
 ### What's new
@@ -22,6 +30,7 @@ For an admin moving from v0.11.8 to v0.12.0.
 
 - Derive and show the PQC migration path of each vulnerable finding
 - Add the hybrid post-quantum status
+- Take the post-quantum verdict from the shared PQC dataset
 
 **Notifications**
 
@@ -45,6 +54,7 @@ For an admin moving from v0.11.8 to v0.12.0.
 **Crypto**
 
 - Group a hybrid under its own name, not its post-quantum half
+- Keep the hybrid a post-quantum family is paired with, on PQC dataset 1.1.0
 - Move the risk table vintage to nist-2026-11 for the dataset's verdicts
 - Take the post-quantum verdict from the family the table resolves
 - Resolve the RSAES-OAEP and RSAES-PKCS1 spellings to RSA
@@ -70,6 +80,7 @@ For an admin moving from v0.11.8 to v0.12.0.
 
 - Stored posture after the seed, and a posture write never deadlocks the pool
 - Say which manifest ecosystems crypto dependency scanning left unchecked
+- Stop concurrent scans deadlocking the licences stage
 - Trust an answer's position only when nothing is missing
 - Keep a maintainer signal of any shape the API sends
 - Complete a scan degraded when a requested scanner cannot run here
@@ -279,6 +290,5 @@ Dependency and Go toolchain bumps. Not marked as security fixes, though a bump c
 
 Changes marked as security fixes. A fix nobody marked is not listed, so an empty list is not a guarantee.
 
-No change between v0.11.8 and v0.12.0 is marked as a security fix.
+- Go 1.27.4 for GO-2026-6859
 <!-- /earnie:stable-changes -->
-
